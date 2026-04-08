@@ -55,7 +55,16 @@ public class SecurityConfig {
         http
                 .csrf(csrf -> csrf.disable())
                 .authorizeHttpRequests(auth -> auth
+                        // Auth endpoints (public)
                         .requestMatchers("/api/auth/register", "/api/auth/login").permitAll()
+
+                        // Hotel endpoints (public for GET, admin for POST/PUT/DELETE)
+                        .requestMatchers("/api/hotels").permitAll()           // GET all hotels
+                        .requestMatchers("/api/hotels/{id}").permitAll()       // GET hotel by ID
+                        .requestMatchers("/api/hotels/location/**").permitAll() // GET by location
+                        .requestMatchers("/api/hotels/active").permitAll()      // GET active hotels
+                        .requestMatchers("/api/hotels/**").hasRole("ADMIN")     // POST, PUT, DELETE need ADMIN
+
                         .anyRequest().authenticated()
                 )
                 .sessionManagement(session -> session
