@@ -5,6 +5,7 @@ import com.hcl.HCL_hotel_booking_backend.enitty.Room;
 import com.hcl.HCL_hotel_booking_backend.repository.RoomRepository;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -31,5 +32,11 @@ public class RoomService {
         return response;
     }
 
+    public Room createRoom(Room room) {
+        return roomRepository.save(room);
+    }
 
+    public List<RoomResponse> getAllRooms(String hotelId) {
+        return roomRepository.findByHotelId(Long.valueOf(hotelId)).stream().map(this::toResponse).toList();
+    }
 }

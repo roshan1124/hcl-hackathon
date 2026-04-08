@@ -11,8 +11,8 @@ public class Room {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private Long hotel_id;
-    private String type;
+    private Long hotelId;
+    private String type = "COUPLE";
     private Double price;
 
     public Long getId() {
@@ -24,11 +24,11 @@ public class Room {
     }
 
     public Long getHotel_id() {
-        return hotel_id;
+        return hotelId;
     }
 
-    public void setHotel_id(Long hotel_id) {
-        this.hotel_id = hotel_id;
+    public void setHotel_id(Long hotelId) {
+        this.hotelId = hotelId;
     }
 
     public String getType() {
@@ -51,7 +51,7 @@ public class Room {
     public String toString() {
         return "Room{" +
                 "id=" + id +
-                ", hotel_id=" + hotel_id +
+                ", hotel_id=" + hotelId +
                 ", type='" + type + '\'' +
                 ", price=" + price +
                 '}';

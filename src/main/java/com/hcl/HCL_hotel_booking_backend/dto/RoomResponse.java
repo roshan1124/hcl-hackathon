@@ -2,7 +2,7 @@ package com.hcl.HCL_hotel_booking_backend.dto;
 
 public class RoomResponse {
     private Long id;
-    private Long hotel_id;
+    private Long hotelId;
     private String type;
     private Double price;
 
@@ -15,11 +15,11 @@ public class RoomResponse {
     }
 
     public Long getHotel_id() {
-        return hotel_id;
+        return hotelId;
     }
 
-    public void setHotel_id(Long hotel_id) {
-        this.hotel_id = hotel_id;
+    public void setHotel_id(Long hotelId) {
+        this.hotelId = hotelId;
     }
 
     public String getType() {
